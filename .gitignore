@@ -1,5 +1,6 @@
 src/
 data/
 images/db/schema.sql
+images/nginx/web-server.conf
 images/php/composer.json
 images/php/php.ini

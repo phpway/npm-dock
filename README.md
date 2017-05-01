@@ -21,7 +21,6 @@ In the examples below, replace `my-project` with name of your choice.
 1. Clone project from GitHub
 ```
 git clone https://github.com/phpway/npm-dock.git my-project
-
 ```
 
 2. Tweak config files as you need. There are config files for `php.ini`, `composer.json`,

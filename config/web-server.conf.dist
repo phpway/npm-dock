@@ -1,0 +1,30 @@
+server {
+  listen 80;
+
+  server_name localhost;
+  root /www/public;
+
+  # serve existing static files located under defined root
+  # everything else gets handled by the app
+  location / {
+    try_files $uri /index.php?$args;
+  }
+
+  # enable gzip'ing of text output (text/html is always compressed)
+  # set compression level to 5 which is a good compromise between size and cpu usage
+  # also don't compress files that are already small (default is 20 bytes which
+  # is an unfortunate as that usually leads to larger files after gzip'ing)
+  gzip on;
+  gzip_comp_level 5;
+  gzip_min_length 256;
+  gzip_types text/plain application/json;
+
+  location ~ ^/index\.php$ {
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_pass   php:9000;
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param  PATH_INFO $fastcgi_path_info;
+    include        fastcgi_params;
+  }
+}

@@ -1,0 +1,5 @@
+src/
+data/
+images/db/schema.sql
+images/php/composer.json
+images/php/php.ini

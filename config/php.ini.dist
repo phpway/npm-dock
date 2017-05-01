@@ -1,0 +1,8 @@
+date.timezone=GMT+0
+
+opcache.enable=1
+opcache.memory_consumption=64
+opcache.max_accelerated_files=1000
+opcache.validate_timestamps=1
+opcache.revalidate_freq=1
+opcache.fast_shutdown=1

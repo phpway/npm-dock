@@ -1,0 +1,29 @@
+version: '2.1'
+
+services:
+  php:
+    links:
+      - db-test
+    depends_on:
+      db-test:
+        condition: service_started
+
+  db-test:
+    image: npm-dock-db
+    container_name: npm-dock-db-test
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: knls_test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+
+  phpmyadmin-test:
+    image: npm-dock-phpmyadmin
+    container_name: npm-dock-phpmyadmin-test
+    ports:
+      - 9081:80
+    links:
+      - db-test
+    environment:
+      PMA_HOST: db-test
+      PMA_PORT: 3306

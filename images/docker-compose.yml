@@ -1,0 +1,50 @@
+version: '2.1'
+
+services:
+  nginx:
+    image: npm-dock-nginx
+    container_name: npm-dock-nginx
+    ports:
+      - 8080:80
+    volumes_from:
+      - php
+    depends_on:
+      php:
+        condition: service_started
+
+  php:
+    image: npm-dock-php
+    container_name: npm-dock-php
+    volumes:
+      - ../src:/www
+      - ../data:/data
+      - npm-data-vendor:/vendor
+    depends_on:
+      db:
+        condition: service_started
+    links:
+      - db
+
+  db:
+    image: npm-dock-db
+    container_name: npm-dock-db
+    volumes:
+      - npm-data-db:/var/lib/mysql
+
+  phpmyadmin:
+    image: npm-dock-phpmyadmin
+    container_name: npm-dock-phpmyadmin
+    ports:
+      - 9080:80
+    volumes:
+      - /sessions
+    restart: always
+    links:
+      - db
+    environment:
+      PMA_HOST: npm-dock-db
+      PMA_PORT: 3306
+
+volumes:
+  npm-data-vendor:
+  npm-data-db:

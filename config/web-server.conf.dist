@@ -1,6 +1,7 @@
 server {
   listen 80;
 
+  disable_symlinks off;
   server_name localhost;
   root /www/public;
 

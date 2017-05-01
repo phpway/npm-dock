@@ -13,6 +13,7 @@ Not recommended for production.
 
 ## Prerequisites
 * Docker v17.0+
+* Docker Compose (in most cases it comes with Docker, if you don't have it, refer to [Install Docker Compose](https://docs.docker.com/compose/install/))
 
 ## Getting Started
 

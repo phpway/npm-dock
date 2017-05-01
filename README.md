@@ -39,5 +39,6 @@ This will build the images if necessary and start the containers. The applicatio
 at `http://localhost:8080` where the document root directory is mapped to `my-project/src/public`.
 If this directory doesn't exist, it will be created with a sample `index.php` file.
 
-4. Copy your project files
-Start coding or mount your existing project files to `my-project/src`.
+4. Mount your existing project files to `my-project/src`.
+
+5. For accessing the database, open `PhpMyAdmin` at `http://localhost:9080` and login as `root` with empty password.

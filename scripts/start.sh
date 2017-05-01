@@ -3,7 +3,7 @@
 CONFIG_DIR=$(dirname $0)/../config
 IMAGES_DIR=$(dirname $0)/../images
 
-# import config files necessary for building Dicker images
+# import config files necessary for building Docker images
 if [ -f ${CONFIG_DIR}/web-server.conf ]; then
     SERVER_CONF_FILE=${CONFIG_DIR}/web-server.conf
 else
